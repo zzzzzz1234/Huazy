@@ -108,7 +108,7 @@ void fanxiang()
 	
 	int x;
 	int k;
-	stu.total = 1.0f;
+	stu.total = 1.0;
 	printf("-------------------------------------------------------------|\n");
 	printf("请输入你需要得到的金额:\n");
 	scanf("%lf",&stu.money);
@@ -177,7 +177,7 @@ lab:printf("若是复利选择1，单利选择2\n");
 void gupiao()
 {   
 	
-	stu.base=0.1F;
+	stu.base=0.1;
 	printf("-------------------------------------------------------------|\n");
 	printf("请输入你的本金:\n");
 	scanf("%lf",&stu.total);
@@ -208,7 +208,7 @@ void gupiao()
 void touzi()
 {
 	
-	stu.base=0.1f;
+	stu.base=0.1;
 	printf("-------------------------------------------------------------|\n");
 	printf("请输入你的本金:\n");
 	scanf("%lf",&stu.total);
@@ -382,16 +382,72 @@ save()
      printf("failed to open file\n");
      return 0;
     }
-	 fprintf(wc," -----------------------------\n");
-	 fprintf(wc," |       年利率：%.2f        |\t\n",stu.base);
-	 fprintf(wc," |       存入年：%.1f        |\t\n",stu.day);
-	 fprintf(wc," |       总利率：%.2f        |\t\n",stu.total);
-	 fprintf(wc," |       本金值：%.2f        |\t\n",stu.money);
-	 fprintf(wc," |       得金额：%.2f        |\t\n",stu.total1);
-	 fprintf(wc," -----------------------------\n");
+	 fprintf(wc," -------------------------------------------------\n");
+	 fprintf(wc," |       年利率：%.2f                   \t|\n",stu.base);
+	 fprintf(wc," |       存入年：%.1f                   \t|\n",stu.day);
+	 fprintf(wc," |       总利率：%.2f                   \t|\n",stu.total);
+	 fprintf(wc," |       本金值：%.2f                   \t|\n",stu.money);
+	 fprintf(wc," |       得金额：%.2f                   \t|\n",stu.total1);
+	 fprintf(wc," -------------------------------------------------\n");
 	 fclose(wc);
 	 return 0;
 }
+
+save1()
+{
+	 FILE* wc =fopen("c:\\ccc.txt","a");
+	 if(wc==NULL) 
+	{
+     printf("failed to open file\n");
+     return 0;
+    }
+	 fprintf(wc," -------------------------------------------------\n");
+	 fprintf(wc," |       投资工具年利率：%.2f             \t |\n",stu.base);
+	 fprintf(wc," |       需要存入年：%.1f                 \t |\n",stu.day);
+	 fprintf(wc," |       本金值：%.2f                     \t |\n",stu.total);
+	 fprintf(wc," |       可得金额：%.2f                   \t |\n",stu.money);
+	 fprintf(wc," -------------------------------------------------\n");
+	 fclose(wc);
+	 return 0;
+}
+
+save2()
+{
+	 FILE* wc =fopen("c:\\ccc.txt","a");
+	 if(wc==NULL) 
+	{
+     printf("failed to open file\n");
+     return 0;
+    }
+	 fprintf(wc," -------------------------------------------------\n");
+	 fprintf(wc," |       平均月回报率：%.2f               \t |\n",stu.base);
+	 fprintf(wc," |       存入的月份：%.1f                 \t |\n",stu.day);
+	 fprintf(wc," |       本金值：%.2f                     \t |\n",stu.total1);
+	 fprintf(wc," |       可得金额：%.2f                   \t |\n",stu.total3);
+	 fprintf(wc," -------------------------------------------------\n");
+	 fclose(wc);
+	 return 0;
+}
+
+
+save3()
+{
+	 FILE* wc =fopen("c:\\ccc.txt","a");
+	 if(wc==NULL) 
+	{
+     printf("failed to open file\n");
+     return 0;
+    }
+	 fprintf(wc," -------------------------------------------------\n");
+	 fprintf(wc," |       每年的年利率：%.2f               \t |\n",stu.base);
+	 fprintf(wc," |       存入年：%.1f                     \t |\n",stu.day/12);
+	 fprintf(wc," |       借款本金：%.2f                   \t |\n",stu.money);
+	 fprintf(wc," |       每月还款金额：%.2f               \t |\n",stu.total);
+	 fprintf(wc," -------------------------------------------------\n");
+	 fclose(wc);
+	 return 0;
+}
+
 duqu()
 {
      FILE* wc =fopen("c:\\ccc.txt","r");
@@ -453,26 +509,32 @@ void main()
     case 2:
 		printf("\n");
 		danli();
+		save();
 		break;
 	case 3:
 		printf("\n");
 		fanxiang();
+		save();
 		break;
 	case 4:
 		printf("\n");
 		gupiao();
+		save1();
 		break;
 	case 5:
 		printf("\n");
 		touzi();
+		save1();
 		break;
 	case 6:
 		printf("\n");
 		ligunli();
+		save2();
 		break;
 	case 7:
 		printf("\n");
 		daikuan();
+		save3();
 		break;
 	}
 }
